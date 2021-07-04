@@ -1,0 +1,17 @@
+[package]
+name = "alure"
+description = "AluVM runtime environment"
+version = "0.1.0"
+authors = ["Dr Maxim Orlovsky <orlovsky@pandoracore.com>"]
+edition = "2018"
+license = "AGPL-2.0"
+repository = "https://github.com/pandoracore/alure"
+homepage = "https://aluvm.org"
+keywords = ["virtual-machine", "emulator", "functional", "risc", "edge-computing"]
+categories = ["no-std", "embedded", "compilers", "cryptography", "emulators"]
+readme = "README.md"
+exclude = [".github"]
+
+[dependencies]
+amplify = "3.7.1"
+aluvm = "0.3.0"
