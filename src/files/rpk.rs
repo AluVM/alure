@@ -5,12 +5,3 @@
 //     Dr. Maxim Orlovsky <orlovsky@pandoracore.com>
 // for Pandora Core AG
 
-extern crate alloc;
-
-mod dyn_data;
-mod files;
-mod isa;
-
-fn main() {
-    println!("Hello, world!");
-}

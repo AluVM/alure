@@ -5,12 +5,14 @@
 //     Dr. Maxim Orlovsky <orlovsky@pandoracore.com>
 // for Pandora Core AG
 
-extern crate alloc;
+use aluvm::libs::Lib;
+use ed25519::Signature;
 
-mod dyn_data;
-mod files;
-mod isa;
+use crate::dyn_data::DynData;
 
-fn main() {
-    println!("Hello, world!");
+pub struct Executable {
+    pub entry_point: u16,
+    pub main: Lib,
+    pub dyn_data: DynData,
+    pub signature: Signature,
 }
