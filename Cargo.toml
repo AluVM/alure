@@ -12,6 +12,13 @@ categories = ["no-std", "embedded", "compilers", "cryptography", "emulators"]
 readme = "README.md"
 exclude = [".github"]
 
+[lib]
+name = "alure"
+
+[[bin]]
+name = "alurex"
+path = "src/main.rs"
+
 [dependencies]
 amplify = "3.7.1"
 aluvm = { version = "0.4.0", git = "https://github.com/internet2-org/rust-aluvm" }
