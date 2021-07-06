@@ -10,8 +10,17 @@
 use aluvm::reg::{Reg16, RegA, RegF, RegR, RegS};
 
 pub enum AluReOp {
-    ReadA(RegA, Reg16, u8),
-    ReadF(RegF, Reg16, u8),
-    ReadR(RegR, Reg16, u8),
-    ReadS(RegS, u8),
+    Read(u16),
+    Check(u16),
+    // Dec(RegS, u16),
+    // Enc(RegS, u16),
+    StoreA(RegA, Reg16, u8),
+    StoreF(RegF, Reg16, u8),
+    StoreR(RegR, Reg16, u8),
+    StoreS(RegS, Reg16, u8),
+
+    LoadA(RegA, Reg16, u8),
+    LoadF(RegF, Reg16, u8),
+    LoadR(RegR, Reg16, u8),
+    LoadS(RegS, Reg16, u8),
 }

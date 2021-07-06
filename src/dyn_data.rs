@@ -13,11 +13,13 @@ use core::ops::{RangeBounds, RangeFull, RangeInclusive};
 use aluvm::data::{ByteStr, MaybeNumber, Number};
 use aluvm::reg::{Reg32, RegA, RegAFR, RegS};
 
+#[derive(Clone, Eq, PartialEq, Hash, Debug)]
 pub struct DynData {
     pub input: Vec<Input>,
     pub output: Vec<Output>,
 }
 
+#[derive(Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Debug)]
 pub struct NumBounds<R = RangeFull>
 where
     R: RangeBounds<Number>,
@@ -27,12 +29,14 @@ where
     pub range: R,
 }
 
+#[derive(Clone, Eq, PartialEq, Hash, Debug)]
 pub struct StrBounds {
     pub default: Option<ByteStr>,
     pub allow_none: bool,
     pub length: RangeInclusive<u16>,
 }
 
+#[derive(Clone, Eq, PartialEq, Hash, Debug)]
 pub enum BoundedValue<R = RangeFull>
 where
     R: RangeBounds<Number>,
@@ -42,6 +46,7 @@ where
     String { index: RegS, bounds: StrBounds },
 }
 
+#[derive(Clone, Eq, PartialEq, Hash, Debug)]
 pub struct Input<R = RangeFull>
 where
     R: RangeBounds<Number>,
@@ -50,11 +55,13 @@ where
     pub bounds: BoundedValue<R>,
 }
 
+#[derive(Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Debug)]
 pub struct Output {
     pub info: String,
     pub states: BTreeSet<RegOutput>,
 }
 
+#[derive(Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Debug)]
 pub enum RegOutput {
     Number {
         reg: RegAFR,

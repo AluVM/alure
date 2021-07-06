@@ -8,13 +8,11 @@
 use aluvm::libs::Lib;
 use ed25519::Signature;
 
-use crate::dyn_data::DynData;
-
 #[derive(Clone, Eq, PartialEq, Debug, Display)]
-#[display("{main}")]
-pub struct Executable {
-    pub entry_point: u16,
-    pub main: Lib,
-    pub dyn_data: DynData,
-    pub signature: Signature,
+#[display("{org}:{name}")]
+pub struct Library {
+    pub org: String,
+    pub name: String,
+    pub lib: Lib,
+    pub sign: Signature,
 }

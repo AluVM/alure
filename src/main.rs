@@ -6,10 +6,12 @@
 // for Pandora Core AG
 
 extern crate alloc;
+#[macro_use]
+extern crate amplify;
 
-mod dyn_data;
-mod files;
-mod isa;
+pub mod dyn_data;
+pub mod files;
+pub mod isa;
 
 fn main() {
     println!("Hello, world!");

@@ -14,5 +14,5 @@ exclude = [".github"]
 
 [dependencies]
 amplify = "3.7.1"
-aluvm = { version = "0.3.0", git = "https://github.com/internet2-org/rust-aluvm" }
+aluvm = { version = "0.4.0", git = "https://github.com/internet2-org/rust-aluvm" }
 ed25519 = "1.1.1"

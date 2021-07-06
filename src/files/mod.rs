@@ -5,5 +5,6 @@
 //     Dr. Maxim Orlovsky <orlovsky@pandoracore.com>
 // for Pandora Core AG
 
-mod rex;
-mod rpk;
+pub mod alu;
+pub mod rex;
+pub mod rpk;
