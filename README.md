@@ -11,13 +11,13 @@ execution environment for AluRE binaries.
 ## Usage
 
 ```
-alurex prog-id [--defaults | --data file] [--prog-dir dir]
+alurex prog-id [--defaults | --dyn-data file] [--prog-dir dir]
 
---defaults:
+-D, --defaults:
     Use default input data from dynamic data segment.
---data:
+-d, --dyn-data:
     Use input data stored in YAML, JSON or TOML file
---prog-dir:
+-p, --prog-dir:
     Directory where Alu binary programs and libraries are stored.
     Defaults for `~/.alure/lib`
 
