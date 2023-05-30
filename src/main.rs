@@ -15,10 +15,10 @@ pub mod isa;
 
 use std::path::PathBuf;
 
-use clap::{AppSettings, Clap};
+use clap::Parser;
 
-#[derive(Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Debug, Clap)]
-#[clap(name = "alurex", bin_name = "alurex", author, version, about = "Executes AluVM binary programs", setting = AppSettings::ColoredHelp)]
+#[derive(Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Debug, Parser)]
+#[clap(name = "alurex", bin_name = "alurex", author, version, about = "Executes AluVM binary programs")]
 pub struct Args {
     /// Use default input data from dynamic data segment.
     #[clap(short = 'D', long)]
