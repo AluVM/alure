@@ -13,12 +13,24 @@ pub mod dyn_data;
 pub mod files;
 pub mod isa;
 
+use std::fs;
 use std::path::PathBuf;
 
+use aluasm::module::Module;
+use aluasm::product::{DyBin, DyLib, Product};
+use alure::program::DyProg;
+use aluvm::data::encoding::Decode;
+use aluvm::isa::Instr;
 use clap::Parser;
 
 #[derive(Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Debug, Parser)]
-#[clap(name = "alurex", bin_name = "alurex", author, version, about = "Executes AluVM binary programs")]
+#[clap(
+    name = "alurex",
+    bin_name = "alurex",
+    author,
+    version,
+    about = "Executes AluVM binary programs"
+)]
 pub struct Args {
     /// Use default input data from dynamic data segment.
     #[clap(short = 'D', long)]
@@ -46,4 +58,17 @@ fn main() {
     let args = Args::parse();
 
     eprintln!("Executing {}", args.exec);
+    let exec = fs::File::open(args.exec).unwrap();
+    let bin = DyBin::decode(exec).unwrap();
+    let mut prog = DyProg::<Instr>::new(bin);
+    for entry in fs::read_dir(args.prog_dir).unwrap() {
+        let entry = entry.unwrap();
+        if entry.path().extension() != Some("ald".as_ref()) {
+            continue;
+        }
+        let lib = DyLib::decode(fs::File::open(entry.path()).unwrap()).unwrap();
+        prog.add_lib(lib);
+    }
+    let mut vm = aluvm::Vm::<Instr>::new();
+    vm.run(&prog, &());
 }
