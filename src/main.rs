@@ -58,15 +58,20 @@ fn main() {
     let args = Args::parse();
 
     eprintln!("Executing {}", args.exec);
-    let exec = fs::File::open(args.exec).unwrap();
-    let bin = DyBin::decode(exec).unwrap();
+    let exec = fs::File::open(args.exec).expect("unable to open the file");
+    let bin = DyBin::decode(exec).expect("unable to decode the executable");
     let mut prog = DyProg::<Instr>::new(bin);
-    for entry in fs::read_dir(args.prog_dir).unwrap() {
-        let entry = entry.unwrap();
+    for entry in fs::read_dir(args.prog_dir)
+        .expect("unable to read the program directory")
+    {
+        let entry = entry.expect("unable to read the program directory entry");
         if entry.path().extension() != Some("ald".as_ref()) {
             continue;
         }
-        let lib = DyLib::decode(fs::File::open(entry.path()).unwrap()).unwrap();
+        let lib = DyLib::decode(
+            fs::File::open(entry.path()).expect("unable to open the library"),
+        )
+        .expect("unable to decode the library");
         prog.add_lib(lib);
     }
     let mut vm = aluvm::Vm::<Instr>::new();
