@@ -1,8 +1,8 @@
 // AluVM Runtime Environment
 // To find more on AluVM please check <https://www.aluvm.org>
 //
-// Designed & written in 2021 by
-//     Dr. Maxim Orlovsky <orlovsky@pandoracore.com>
+// Designed & written in 2023 by
+//     Yudai Kiyofuji <own7000hr@gmail.com>
 // for Pandora Core AG
 
 use std::collections::{btree_map, BTreeMap};
