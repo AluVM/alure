@@ -5,7 +5,7 @@
 //     Dr. Maxim Orlovsky <orlovsky@pandoracore.com>
 // for Pandora Core AG
 
-use aluvm::libs::Lib;
+use aluvm::library::Lib;
 use ed25519::Signature;
 
 #[derive(Clone, Eq, PartialEq, Debug, Display)]

@@ -22,9 +22,10 @@ required-features = ["cli"]
 
 [dependencies]
 amplify = "3.7.1"
-aluvm = { version = "0.4.0", git = "https://github.com/internet2-org/rust-aluvm" }
+aluvm = "0.10.2"
+aluasm = { git = "https://github.com/6293/aluasm", branch = "dyprog" }
 ed25519 = "1.1.1"
-clap = { version = "3.0.0-beta.2", optional = true }
+clap = { version = "4.3.0", optional = true, features = ["derive"] }
 serde = { version = "1.0", optional = true }
 serde_json = { version = "1", optional = true }
 serde_yaml = { version = "0.8", optional = true }
